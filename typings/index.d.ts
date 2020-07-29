@@ -1,14 +1,14 @@
-declare module 'ytpl' {
+declare module "ytpl" {
   namespace ytpl {
     type options = {
       /** Limits the pulled items. */
       limit?: number;
-      headers?: { [key: string]: string; };
+      headers?: { [key: string]: string };
     };
     type result = {
       id: string;
       url: string;
-      title:string;
+      title: string;
       visibility: string;
       description: string;
       total_items: number;
@@ -54,21 +54,31 @@ declare module 'ytpl' {
      * @description Returns a playlist ID from a YouTube URL. Can be called with the playlist ID directly, in which case it returns it.
      * @returns A promise that resolves to a playlist ID or error.
      */
-    function getPlaylistID(link: string, callback: ((err: Error, playlistID: string) => any)): void;
+    function getPlaylistID(
+      link: string,
+      callback: (err: Error, playlistID: string) => any
+    ): void;
   }
   /**
    * @description Attempts to resolve the given playlist id
    * @param id Can be the id of the YT playlist or playlist link or user link (resolves uploaded playlist) or channel link (resolves uploaded playlist)
    * @param callback Function, fired after the request is done. Contains an error or a result
    */
-  function ytpl(id: string, callback: ((err: Error, result: ytpl.result) => any)): void;
+  function ytpl(
+    id: string,
+    callback: (err: Error, result: ytpl.result) => any
+  ): void;
   /**
    * @description Attempts to resolve the given playlist id
    * @param id Can be the id of the YT playlist or playlist link or user link (resolves uploaded playlist) or channel link (resolves uploaded playlist)
    * @param options Object with options. limit[Number] -> limits the pulled items, defaults to 100, set to 0 or Infinity to get the whole playlist
    * @param callback Function, fired after the request is done. Contains an error or a result
    */
-  function ytpl(id: string, options: ytpl.options, callback: ((err: Error, result: ytpl.result) => any)): void;
+  function ytpl(
+    id: string,
+    options: ytpl.options,
+    callback: (err: Error, result: ytpl.result) => any
+  ): void;
   /**
    * @description Attempts to resolve the given playlist id
    * @param id Can be the id of the YT playlist or playlist link or user link (resolves uploaded playlist) or channel link (resolves uploaded playlist)
@@ -84,7 +94,7 @@ declare module 'ytpl' {
   function ytpl(id: string, options: ytpl.options): Promise<ytpl.result>;
 
   // Helper property to suppress deprecation warnings
-  ytpl.do_warn_deprecate: boolean;
+  let do_warn_deprecate: boolean;
 
   export = ytpl;
 }
